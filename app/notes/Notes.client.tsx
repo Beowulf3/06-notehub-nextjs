@@ -55,26 +55,28 @@ function NotesClient() {
   if (isError)
     return (
       <div className={css.error}>
-        Could not fetch the list of notes.{" "}
+        Could not fetch the list of notes.
         {error?.message || "Something went wrong"}
       </div>
     );
 
   return (
     <div className={css.app}>
-      <div className={css.toolbar}>
-        <SearchBox onChange={handleChange} />
-        {isSuccess && totalPages > 1 && (
-          <Pagination
-            totalPages={totalPages}
-            currentPage={currentPage}
-            onPageChange={handlePageChange}
-          />
-        )}
-        <button className={css.button} onClick={() => setIsModalOpen(true)}>
-          Create note +
-        </button>
-      </div>
+      {isSuccess && (
+        <div className={css.toolbar}>
+          <SearchBox onChange={handleChange} />
+          {isSuccess && totalPages > 1 && (
+            <Pagination
+              totalPages={totalPages}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            />
+          )}
+          <button className={css.button} onClick={() => setIsModalOpen(true)}>
+            Create note +
+          </button>
+        </div>
+      )}
       {isModalOpen && (
         <Modal onClose={handleModalClose}>
           <NoteForm onClose={handleModalClose} />

@@ -1,12 +1,12 @@
 "use client";
 
-import css from "./notes.module.css";
+import css from "../notes.module.css";
 
 interface ErrorProps {
   error: Error;
 }
 
-const error = ({ error }: ErrorProps) => {
+const Error = ({ error }: ErrorProps) => {
   return (
     <p className={css.error}>
       Could not fetch the list of notes. {error.message}
@@ -14,4 +14,4 @@ const error = ({ error }: ErrorProps) => {
   );
 };
 
-export default error;
+export default Error;
